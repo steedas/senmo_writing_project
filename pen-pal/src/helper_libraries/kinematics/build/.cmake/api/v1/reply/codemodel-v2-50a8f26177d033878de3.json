@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-886b4e6241c4f8fd5327.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "kinematics",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "kinematics::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-kinematics-Debug-ac953aed69c1593e4ef1.json",
+					"name" : "kinematics",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "kinematics_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-kinematics_uninstall-Debug-560255911268d9dd90ab.json",
+					"name" : "kinematics_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_param_server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_param_server-Debug-da25c36174fa3abc2b9a.json",
+					"name" : "robot_param_server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-8a18184bf22b9db3aeb7.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/steed/senmo-kinova-writing/kinematics/build",
+		"source" : "/home/steed/senmo-kinova-writing/kinematics"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

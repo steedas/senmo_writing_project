@@ -1,0 +1,11 @@
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/uninstall.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/kinematics_uninstall.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/kinematics.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/robot_param_server.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/test.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/edit_cache.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/rebuild_cache.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/list_install_components.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/install.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/install/local.dir
+/home/steed/senmo-kinova-writing/kinematics/build/CMakeFiles/install/strip.dir

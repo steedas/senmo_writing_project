@@ -1,0 +1,74 @@
+kuka_lbr:
+  param_server:
+    ros__parameters:
+      model_name: "LBR iiwa R7 R800"
+      mithril_name: "Anduril"
+      serial: "981722"
+
+      n_joints: 7 
+
+      d3: 0.4   # The legnth of link 3 (0.4 m for the KUKA LBR)
+      d5: 0.4   # The legnth of link 5 (0.4 m for the KUKA LBR)
+      h_base: 0.340 # The distance between the base and second joint of KUKA LBR
+      h_tool: 0.228448 # 0.152 (link A6's length) + 0.050448m (ATI sensor + mount length) + .026m (Elecromagnet + mount length)
+
+      protected_space_xyz: [-0.8, -0.06, -500.0]
+      protected_space_abc: [3.92699081698724, 0.0, 0.0] # 225 deg
+      protected_space_length_xyz: [ 1000.0, 1000.0, 1000.0] 
+      wrist_safety_radius: 0.165 
+
+      theoretical_workspace_radius_minmax: [0.2180, 0.7970]
+
+      # Min must be greater than 2*0.4*sin((pi-2.0420)/2) where 2.0420 is q4_max.
+      # Max must be less than 2*0.4*sin((pi-.1745)/2) where 0.1745 is q4_min.
+      workspace_radius_minmax: [0.42, 0.80] 
+
+      #min and max joint angles and max velocities to be used for ikin
+      q_ikin_min: [-2.7925, -1.9199, -2.7925, -2.0420, -2.7925, -1.9897, -2.9016]
+      q_ikin_max: [ 2.7925,  1.9897,  2.7925,  2.0420,  2.7925,  1.9897,  2.9016]
+      qdot_ikin_max: [0.3683, 1.3683,  1.3963,  1.8151,  1.9548,  2.5133,  2.5133]
+
+      # Joint position limits [rad]. 5% inbound of max joint limits. 
+      # Stopping distance with max acceleration and max velocity is ~2.7% of max 
+      # joint limit.
+      q_min_safe:    [-2.8187, -1.9897, -2.8187, -1.9897, -2.8187, -1.9897, -2.9016]
+      q_max_safe:    [ 2.8187,  1.9897,  2.8187,  1.9897,  2.8187,  1.9897,  2.9016]
+      q_min_padded:  [-2.9671, -1.5708, -2.9671, -2.0944, -2.9671, -2.0944, -3.0543]
+      q_max_padded:  [ 2.9671,  2.0944,  2.9671,  2.0944,  2.9671,  2.0944,  3.0543]
+      q_min_limit:   [-2.9671, -2.0944, -2.9671, -2.0944, -2.9671, -2.0944, -3.0543]
+      q_max_limit:   [ 2.9671,  2.0944,  2.9671,  2.0944,  2.9671,  2.0944,  3.0543]
+      q_vel_limit:   [1.71042, 1.71042, 1.74532, 2.26892, 2.44346, 3.14159, 3.14159] # in rad/s. Exceeding these limits causes "Illegal axis delta" fault (possible if moving by hand, otherwise Sunrise conroller automatically caps it)
+      q_acc_limit:   [ 26.406,   25.73,  58.465,  58.358, 295.597, 178.378, 209.876] # in rad/s^2. Computed based on max torque and worst case inertia for each joint.
+      q_jrk_limit:   [17604.0, 17154.0, 38977.0, 38906.0,197065.0,118919.0,139918.0] # in rad/s^3. Computed based on max acceleration and a rise time of 0.15s.
+      q_tau_limit:   [  154.0,   154.0,    96.0,    96.0,    94.0,    33.0,    34.0] # in Nm. Sunrise controller caps the commanded torque to these limits, however commanded torques higher than (or at) these limits for multiple joints can cause overcurrent and result in a blown fuse. 
+      q_inertia_max: [  5.832,   5.985,   1.642,   1.645,   0.318,   0.185,   0.162] # max inertia of joints
+
+      tau_rate_max: 30.0         # max allowed torque change per sample 
+      tau_runaway_percent: 500.0 # Percentage of the max torque to declare commanded torque as runaway
+
+      # Kp gain to impose virtual bounds
+      safety_controller_k_p: [550.0,   0.0,   0.0,   0.0,   0.0,  0.0,  0.0,
+                                0.0, 500.0,   0.0,   0.0,   0.0,  0.0,  0.0,
+                                0.0,   0.0, 175.0,   0.0,   0.0,  0.0,  0.0,
+                                0.0,   0.0,   0.0, 250.0,   0.0,  0.0,  0.0,
+                                0.0,   0.0,   0.0,   0.0, 230.0,  0.0,  0.0,
+                                0.0,   0.0,   0.0,   0.0,   0.0, 80.0,  0.0,
+                                0.0,   0.0,   0.0,   0.0,   0.0,  0.0, 80.0]
+      # Kd gain to impose virtual bounds
+      safety_controller_k_d: [ 60.0,  0.0,  0.0,  0.0,  0.0, 0.0, 0.0,
+                                0.0, 75.0,  0.0,  0.0,  0.0, 0.0, 0.0,
+                                0.0,  0.0, 24.0,  0.0,  0.0, 0.0, 0.0,
+                                0.0,  0.0,  0.0, 35.0,  0.0, 0.0, 0.0,
+                                0.0,  0.0,  0.0,  0.0, 11.0, 0.0, 0.0,
+                                0.0,  0.0,  0.0,  0.0,  0.0, 4.0, 0.0,
+                                0.0,  0.0,  0.0,  0.0,  0.0, 0.0, 4.0]
+  
+      # Create the DH chain.
+      #           theta  d  a           alpha prismatic
+      dh_params: [0.0, 0.0, 0.0, -1.57079632679,    0.0,
+                  0.0, 0.0, 0.0,  1.57079632679,    0.0,
+                  0.0, 0.4, 0.0,  1.57079632679,    0.0,
+                  0.0, 0.0, 0.0, -1.57079632679,    0.0,
+                  0.0, 0.4, 0.0, -1.57079632679,    0.0,
+                  0.0, 0.0, 0.0,  1.57079632679,    0.0,
+                  0.0, 0.0, 0.0,            0.0,    0.0]
